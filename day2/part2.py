@@ -9,15 +9,19 @@ OPPONENT_CHOICES = ["A", "B", "C"]
 MY_CHOICES = ["X", "Y", "Z"]
 
 
+def get_element_weights(shift_num):
+    weights = [4, 2, -4]
+    for i in range(shift_num):
+        weights.insert(0, weights.pop())
+    return weights
+
+
 def play(opponent_choice, my_choice):
-    def get_element_weights(shift_num):
-        weights = [4, 2, -4]
-        for i in range(shift_num):
-            weights.insert(0, weights.pop())
-        return weights
+    if opponent_choice == my_choice:
+        return DRAW
 
     element_weights = get_element_weights(opponent_choice)
-    return DRAW if opponent_choice == my_choice else element_weights[opponent_choice] + element_weights[my_choice]
+    return element_weights[opponent_choice] + element_weights[my_choice]
 
 
 assert play(ROCK, PAPER) == WIN
@@ -31,6 +35,7 @@ assert play(PAPER, ROCK) == LOOSE
 assert play(SCISSORS, PAPER) == LOOSE
 assert play(SCISSORS, SCISSORS) == DRAW
 assert play(SCISSORS, ROCK) == WIN
+
 
 def translate_my_choice(my_choice, opponent_choice):
     TRANSLATION_MAP = {
