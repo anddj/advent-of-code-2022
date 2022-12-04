@@ -14,7 +14,7 @@ def get_item_priority(item):
 with open("input.txt", "r") as f:
     for line in f:
         line = line.rstrip()
-        half = int(len(line) / 2)
+        half = len(line) // 2
         p1, p2 = set(line[:half]), set(line[half:])
         intersection = next(iter(p1.intersection(p2)))
         priorities_sum += get_item_priority(intersection)
