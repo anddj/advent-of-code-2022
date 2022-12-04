@@ -1,16 +1,18 @@
 """
-
 https://adventofcode.com/2022/day/4
 
->>> test_input = '''2-4,6-8
+>>> test_input_str = '''2-4,6-8
 ... 2-3,4-5
 ... 5-7,7-9
 ... 2-8,3-7
 ... 6-6,4-6
 ... 2-6,4-8'''
->>> main(test_input)
+>>> main(test_input_str)
 Part one answer is 2
 Part two answer is 4
+>>> main()
+Part one answer is 528
+Part two answer is 881
 """
 
 
@@ -32,12 +34,11 @@ def get_ranges(r_str):
     return r1, r2
 
 
-def main(input_data=None):
+def main(input_str=None):
     subset_counter = intersection_counter = 0
-    for line in input_provider(input_data):
+    for line in input_provider(input_str):
         range1, range2 = get_ranges(line)
         subset_counter += set(range1).issubset(set(range2)) or set(range2).issubset(range1)
-
         intersection_counter += not set(range1).isdisjoint(set(range2))
 
     print("Part one answer is", subset_counter)
