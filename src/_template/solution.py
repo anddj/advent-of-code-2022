@@ -1,17 +1,11 @@
 """
 https://adventofcode.com/2022/day/NN
 
->>> test_input_str = '''Enter
-... your
-... test
-... string
-... here'''
+>>> test_input_str = '''aaa
+... bbb
+... ccc'''
 >>> main(test_input_str)
-Part one answer is 5
-Part two answer is 5
->>> main()
-Part one answer is 3
-Part two answer is 3
+3
 """
 
 
@@ -22,17 +16,15 @@ def input_provider(input_str=None):
     else:
         with open("input.txt", "r") as f:
             for ll in f:
-                yield ll
+                yield ll.rstrip()
 
 
 def main(input_str=None):
-    answer_1_aggregator = answer_2_aggregator = 0
+    answer = 0
     for line in input_provider(input_str):
-        answer_1_aggregator += bool(line)
-        answer_2_aggregator += bool(line)
+        answer += bool(line)
 
-    print("Part one answer is", answer_1_aggregator)
-    print("Part two answer is", answer_2_aggregator)
+    print(answer)
 
 
 if __name__ == "__main__":
