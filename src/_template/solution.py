@@ -8,8 +8,10 @@ https://adventofcode.com/2022/day/NN
 3
 """
 
+from typing import Generator
 
-def input_provider(input_str=None):
+
+def input_provider(input_str: str = None) -> Generator[str, None, None]:
     if input_str:
         for s in input_str.split("\n"):
             yield s
@@ -19,7 +21,7 @@ def input_provider(input_str=None):
                 yield ll.rstrip()
 
 
-def main(input_str=None):
+def main(input_str: str = None) -> None:
     answer = 0
     for line in input_provider(input_str):
         answer += bool(line)
