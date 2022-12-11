@@ -5,7 +5,9 @@ https://adventofcode.com/2022/day/NN
 ... bbb
 ... ccc'''
 >>> main(test_input_str)
-3
+aaa
+bbb
+ccc
 """
 
 from typing import Generator
@@ -22,11 +24,8 @@ def input_provider(input_str: str = None) -> Generator[str, None, None]:
 
 
 def main(input_str: str = None) -> None:
-    answer = 0
     for line in input_provider(input_str):
-        answer += bool(line)
-
-    print(answer)
+        print(line)
 
 
 if __name__ == "__main__":
